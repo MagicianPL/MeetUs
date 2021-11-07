@@ -39,6 +39,7 @@
         text-align: center;
         font: bold;
         font-size: 40px;
+        color: #88083d;
     }
 
     .desc {
