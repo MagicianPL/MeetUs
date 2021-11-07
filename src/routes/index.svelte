@@ -1,5 +1,6 @@
 <script>
 	import Header from '../components/Header.svelte';
+	import MeetupItem from '../components/MeetupItem.svelte';
 
 	const meetups = [
 		{
