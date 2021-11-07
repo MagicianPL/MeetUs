@@ -1,13 +1,25 @@
+<script>
+    export let title;
+    export let description;
+    export let img;
+    export let address;
+    export let email;
+</script>
+
 <div class="meetup">
     <header>
-        <h1>Title</h1>
+        <h1>{title}</h1>
     </header>
-    <p class="subtitle">Subtitle</p>
     <div class="image">
-        <img src="/" alt="meetup" />
+        <img src="{img}" alt="meetup" />
     </div>
-    <p>description</p>
-    <p>adress</p>
+    <p class="desc">{description}</p>
+    <p>{address}</p>
+    <footer>
+        <p>{email}</p>
+        <button>Show details</button>
+        <button>Favorite</button>
+    </footer>
 </div>
 
 <style>
@@ -29,7 +41,7 @@
         font-size: 40px;
     }
 
-    .subtitle {
+    .desc {
         color: rgb(48, 45, 45);
         font-size: 30px;
     }
