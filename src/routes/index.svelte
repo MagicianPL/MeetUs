@@ -1,6 +1,8 @@
 <script>
 	import Header from '../components/Header.svelte';
 	import MeetupGrid from '../components/MeetupGrid.svelte';
+	import TextInput from '../components/TextInput.svelte';
+	import Button from '../components/Button.svelte';
 
 	let title = "";
 	let description = "";
@@ -41,39 +43,42 @@
 
 		meetups = [newMeetup, ...meetups];
 	};
+
 </script>
 
 <Header />
 
 <main>
 	<form on:submit|preventDefault={addMeetup}>
-		<div class="form-control">
-			<label for="title">Title</label>
-			<input bind:value={title} type="text" id="title" />
-		</div>
-		<div class="form-control">
-			<label for="description">Description</label>
-			<textarea bind:value={description} rows="3" id="description"></textarea>
-		</div>
-		<div class="form-control">
-			<label for="image-url">Image URL</label>
-			<input bind:value={imageUrl} type="text" id="image-url" />
-		</div>
-		<div class="form-control">
-			<label for="address">Address</label>
-			<input bind:value={address} type="text" id="address" />
-		</div>
-		<div class="form-control">
-			<label for="email">Email</label>
-			<input bind:value={email} type="email" id="email" />
-		</div>
-		<button type="submit">Save</button>
+		<TextInput id="title" label="Title" value={title} on:input={e => {title=e.target.value}} />
+		<TextInput id="description" label="Description" controlType="textarea" rows="3" value={description} on:input={e => {description=e.target.value}} />
+		<TextInput id="image-url" label="Image URL" value={imageUrl} on:input={e => {imageUrl=e.target.value}} />
+		<TextInput id="address" label="Address" value={address} on:input={e => {address=e.target.value}} />
+		<TextInput id="email" type="email" label="E-mail" value={email} on:input={e => {email=e.target.value}} />
+		<Button caption="Save" type="submit" />
 	</form>
 	<MeetupGrid {meetups} />
 </main>
 
 <style>
+	:global(*) {
+		margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+	}
+
+	:global(body) {
+		background-color: rgb(240, 238, 233);
+	}
+
 	main {
 		margin-top: 5rem;
+		
+	}
+
+	form {
+		width: 30rem;
+		max-width: 90%;
+		margin: 0 auto;
 	}
 </style>

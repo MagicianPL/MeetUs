@@ -38,12 +38,12 @@
     h1 {
         text-align: center;
         font: bold;
-        font-size: 40px;
+        font-size: 35px;
         color: #88083d;
     }
 
     .desc {
         color: rgb(48, 45, 45);
-        font-size: 30px;
+        font-size: 25px;
     }
 </style>

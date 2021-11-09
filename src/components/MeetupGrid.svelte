@@ -16,6 +16,7 @@
   display: grid;
   grid-template-columns: 1fr;
   grid-gap: 1rem;
+  margin-top: 2.5rem;
 }
 
 @media (min-width: 768px) {
