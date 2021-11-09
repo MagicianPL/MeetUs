@@ -26,6 +26,28 @@
 <Header />
 
 <main>
+	<form>
+		<div class="form-control">
+			<label for="title">Title</label>
+			<input type=text id="title" />
+		</div>
+		<div class="form-control">
+			<label for="description">Description</label>
+			<input type=text id="description" />
+		</div>
+		<div class="form-control">
+			<label for="image-url">Image URL</label>
+			<input type=text id="image-url" />
+		</div>
+		<div class="form-control">
+			<label for="address">Address</label>
+			<input type=text id="address" />
+		</div>
+		<div class="form-control">
+			<label for="email">Email</label>
+			<input type=text id="email" />
+		</div>
+	</form>
 	<MeetupGrid {meetups} />
 </main>
 
