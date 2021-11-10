@@ -1,6 +1,7 @@
 <script>
 import {createEventDispatcher} from 'svelte';
 import Button from './Button.svelte';
+import Badge from './Badge.svelte';
 
 const dispatch = createEventDispatcher();
 
@@ -15,7 +16,12 @@ const dispatch = createEventDispatcher();
 
 <div class="meetup">
     <header>
-        <h1>{title}</h1>
+        <h1>
+            {title}
+            {#if isFav}
+            <Badge>FAVORITE</Badge>
+            {/if}
+        </h1>
     </header>
     <div class="image">
         <img src="{img}" alt="meetup" />
@@ -51,7 +57,7 @@ const dispatch = createEventDispatcher();
         font-size: 30px;
         color: #88083d;
         margin-bottom: 1.5rem;
-        height: 70px;
+        height: 85px;
         padding: 20px 8px 0 8px;
     }
 
