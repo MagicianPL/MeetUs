@@ -26,7 +26,7 @@ const dispatch = createEventDispatcher();
     </div>
     <footer>
         <Button href="mailto:{email}" caption="Contact" />
-        <Button caption="{isFav ? 'Unfavorite' : 'Favorite'}" mode="outline" type="button" on:click={()=>{dispatch('toggleFavorite', id)}} />
+        <Button caption="{isFav ? 'Unfavorite' : 'Favorite'}" color={isFav ? null : 'success'} mode="outline" type="button" on:click={()=>{dispatch('toggleFavorite', id)}} />
         <Button caption="Show Details" type="button" />
     </footer>
 </div>
