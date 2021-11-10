@@ -17,7 +17,8 @@
 			description: "Amazing, awesome, cool fatest bootcamp in the world! Become Senior in just 3 minutes!",
 			image: "https://media.istockphoto.com/photos/computer-programmer-working-on-laptop-picture-id1265176772?b=1&k=20&m=1265176772&s=170667a&w=0&h=IHFnvxa3kvVTuZcEfPpCSGIFA_gNT7dIlGDR7eD2cFI=",
 			address: "NYC, 00-000",
-			email: "coding@test.com"
+			email: "coding@test.com",
+			isFavorite: false,
 		},
 
 		{
@@ -26,7 +27,8 @@
 			description: "You are the reason of happiness, you are the Santa :)",
 			image: "https://images.unsplash.com/photo-1511600173735-a896042389cf?ixid=MnwxMjA3fDB8MHxzZWFyY2h8OHx8c2FudGF8ZW58MHx8MHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
 			address: "Florida, 12-345",
-			email: "santaclaus@test.com"
+			email: "santaclaus@test.com",
+			isFavorite: false,
 		},
 	];
 
@@ -44,6 +46,21 @@
 		meetups = [newMeetup, ...meetups];
 	};
 
+	const toggleFavorite = (e) => {
+		const id = e.detail;
+		//I'm cloning choosed meetup
+		const updatedMeetup = { ...meetups.find(obj => obj.id === id) } ;
+		updatedMeetup.isFavorite = !updatedMeetup.isFavorite;
+
+		const meetupIndex = meetups.findIndex(obj => obj.id === id);
+		//I'm cloning array
+		const updatedArrMeetups = [...meetups];
+		//changing old meetup to new one;
+		updatedArrMeetups[meetupIndex] = updatedMeetup;
+		//updating array;
+		meetups = updatedArrMeetups;
+	};
+
 </script>
 
 <Header />
@@ -57,7 +74,7 @@
 		<TextInput id="email" type="email" label="E-mail" value={email} on:input={e => {email=e.target.value}} />
 		<Button caption="Save" type="submit" />
 	</form>
-	<MeetupGrid {meetups} />
+	<MeetupGrid {meetups} on:toggleFavorite={toggleFavorite} />
 </main>
 
 <style>
