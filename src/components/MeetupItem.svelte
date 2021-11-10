@@ -1,4 +1,6 @@
 <script>
+import Button from './Button.svelte';
+
     export let title;
     export let description;
     export let img;
@@ -13,12 +15,14 @@
     <div class="image">
         <img src="{img}" alt="meetup" />
     </div>
-    <p class="desc">{description}</p>
-    <p>{address}</p>
+    <div class="content">
+        <p class="desc">{description}</p>
+        <p>{address}</p>
+    </div>
     <footer>
-        <p>{email}</p>
-        <button>Show details</button>
-        <button>Favorite</button>
+        <Button href="mailto:{email}" caption="Contact" />
+        <Button caption="Favorite" mode="outline" type="button" />
+        <Button caption="Show Details" type="button" />
     </footer>
 </div>
 
@@ -26,9 +30,10 @@
     .meetup {
         width: 90%;
         max-width: 1000px;
-        padding: 1.5rem;
         background-color: rgb(248, 246, 242);
         margin: 0 auto 3rem auto;
+        box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+        border-radius: 5px;
     }
 
     .meetup * {
@@ -38,12 +43,36 @@
     h1 {
         text-align: center;
         font: bold;
-        font-size: 35px;
+        font-size: 30px;
         color: #88083d;
+        margin-bottom: 1.5rem;
+        height: 70px;
+        padding: 20px 8px 0 8px;
+    }
+
+    .image {
+        width: 100%;
+        height: 250px;
+        overflow: hidden;
+        margin-bottom: 20px;
+    }
+
+    img {
+        width: 100%;
+    }
+
+    .content {
+        padding: 0 8px;
+        height: 9rem;
     }
 
     .desc {
         color: rgb(48, 45, 45);
         font-size: 25px;
+        margin-bottom: 12px;
+    }
+
+    footer {
+        margin-bottom: 2rem;
     }
 </style>
