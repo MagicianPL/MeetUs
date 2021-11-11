@@ -28,18 +28,17 @@
 		},
 	];
 
-	const addMeetup = () => {
-		console.log("add meetup")
+	const addMeetup = (e) => {
 		const newMeetup = {
 			id: Math.random().toString(),
-			title: title,
-			description: description,
-			image: imageUrl,
-			address: address,
-			email: email,
+			title: e.detail.title,
+			description: e.detail.description,
+			image: e.detail.imageUrl,
+			address: e.detail.address,
+			email: e.detail.email,
 		};
-
 		meetups = [newMeetup, ...meetups];
+		showForm = false;
 	};
 
 	const toggleFavorite = (e) => {
@@ -61,9 +60,11 @@
 
 <Header />
 <main>
+	<div class="form-control">
 	<Button on:click={()=>{showForm = !showForm}} caption="Add Meetup" />
+	</div>
 	{#if showForm}
-	<EditMeetup />
+	<EditMeetup on:save={addMeetup} />
 	{/if}
 	<MeetupGrid {meetups} on:toggleFavorite={toggleFavorite} />
 </main>
@@ -77,6 +78,10 @@
 
 	:global(body) {
 		background-color: rgb(240, 238, 233);
+	}
+
+	.form-control {
+		margin: 1rem;
 	}
 
 	main {
