@@ -3,7 +3,7 @@
     import TextInput from './TextInput.svelte';
     import Button from './Button.svelte';
     import Modal from './Modal.svelte';
-    import {isEmpty} from '../helpers/validation.js';
+    import {isEmpty, emailIsValid} from '../helpers/validation.js';
 
     const dispatch = createEventDispatcher();
 
@@ -22,7 +22,7 @@
     $: validDesc = !isEmpty(description);
     $: validUrl = !isEmpty(imageUrl);
     $: validAddress = !isEmpty(address);
-    $: validEmail = !isEmpty(email);
+    $: validEmail = emailIsValid(email);
 
     const submitForm = () => {
         dispatch('save', {
