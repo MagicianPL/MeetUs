@@ -64,7 +64,7 @@
 	<Button on:click={()=>{showForm = !showForm}}>Add Meetup</Button>
 	</div>
 	{#if showForm}
-	<EditMeetup on:save={addMeetup} />
+	<EditMeetup on:save={addMeetup} on:cancel={()=>{showForm = false}} />
 	{/if}
 	<MeetupGrid {meetups} on:toggleFavorite={toggleFavorite} />
 </main>
