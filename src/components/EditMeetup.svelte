@@ -25,7 +25,7 @@
 
 <Modal on:cancel title="Edit Meetup Data">
 <form on:submit|preventDefault={submitForm}>
-    <TextInput id="title" label="Title" value={title} on:input={e => {title=e.target.value}} />
+    <TextInput id="title" label="Title" value={title} valid={true} validityMessage="Please enter a valid title" on:input={e => {title=e.target.value}} />
     <TextInput id="description" label="Description" controlType="textarea" rows="3" value={description} on:input={e => {description=e.target.value}} />
     <TextInput id="image-url" label="Image URL" value={imageUrl} on:input={e => {imageUrl=e.target.value}} />
     <TextInput id="address" label="Address" value={address} on:input={e => {address=e.target.value}} />

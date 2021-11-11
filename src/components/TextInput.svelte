@@ -5,6 +5,8 @@
     export let rows = null;
     export let value;
     export let type = "text";
+    export let valid = true;
+    export let validityMessage = "";
 </script>
 
 <div class="form-control">
@@ -15,6 +17,10 @@
 <input on:input value={value} type="email" id="{id}" />
 {:else}
     <input on:input value={value} type="text" id="{id}" />
+{/if}
+
+{#if validityMessage && !valid}
+  <p class="error-message">{validityMessage}</p>
 {/if}
 </div>
 
@@ -47,6 +53,16 @@ label {
 .form-control {
   padding: 0.5rem 0;
   width: 100%;
+  margin: 0.25rem 0;
+}
+
+.invalid {
+  border-color: red;
+  background-color: rgb(235, 228, 228);
+}
+
+.error-message {
+  color: red;
   margin: 0.25rem 0;
 }
 
