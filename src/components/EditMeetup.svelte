@@ -32,6 +32,10 @@
     <TextInput id="email" type="email" label="E-mail" value={email} on:input={e => {email=e.target.value}} />
     <!--<Button type="submit">Save</Button>-->
 </form>
+<div slot="footer">
+    <Button type="button" mode="outline" on:click={()=>{dispatch("cancel")}}>Cancel</Button>
+    <Button type="button" on:click={submitForm}>Save</Button>
+</div>
 </Modal>
 
 <style>
