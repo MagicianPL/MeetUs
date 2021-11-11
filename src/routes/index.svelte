@@ -1,14 +1,10 @@
 <script>
 	import Header from '../components/Header.svelte';
 	import MeetupGrid from '../components/MeetupGrid.svelte';
-	import TextInput from '../components/TextInput.svelte';
+	import EditMeetup from '../components/EditMeetup.svelte';
 	import Button from '../components/Button.svelte';
-
-	let title = "";
-	let description = "";
-	let imageUrl = "";
-	let address = "";
-	let email = "";
+	
+	let showForm = false;
 
 	let meetups = [
 		{
@@ -64,16 +60,11 @@
 </script>
 
 <Header />
-
 <main>
-	<form on:submit|preventDefault={addMeetup}>
-		<TextInput id="title" label="Title" value={title} on:input={e => {title=e.target.value}} />
-		<TextInput id="description" label="Description" controlType="textarea" rows="3" value={description} on:input={e => {description=e.target.value}} />
-		<TextInput id="image-url" label="Image URL" value={imageUrl} on:input={e => {imageUrl=e.target.value}} />
-		<TextInput id="address" label="Address" value={address} on:input={e => {address=e.target.value}} />
-		<TextInput id="email" type="email" label="E-mail" value={email} on:input={e => {email=e.target.value}} />
-		<Button caption="Save" type="submit" />
-	</form>
+	<Button on:click={()=>{showForm = !showForm}} caption="Add Meetup" />
+	{#if showForm}
+	<EditMeetup />
+	{/if}
 	<MeetupGrid {meetups} on:toggleFavorite={toggleFavorite} />
 </main>
 
@@ -93,9 +84,5 @@
 		
 	}
 
-	form {
-		width: 30rem;
-		max-width: 90%;
-		margin: 0 auto;
-	}
+	
 </style>
