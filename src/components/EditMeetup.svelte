@@ -28,7 +28,7 @@
     <TextInput id="image-url" label="Image URL" value={imageUrl} on:input={e => {imageUrl=e.target.value}} />
     <TextInput id="address" label="Address" value={address} on:input={e => {address=e.target.value}} />
     <TextInput id="email" type="email" label="E-mail" value={email} on:input={e => {email=e.target.value}} />
-    <Button caption="Save" type="submit" />
+    <Button type="submit">Save</Button>
 </form>
 
 <style>

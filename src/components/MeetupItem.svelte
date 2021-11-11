@@ -31,9 +31,9 @@ const dispatch = createEventDispatcher();
         <p>{address}</p>
     </div>
     <footer>
-        <Button href="mailto:{email}" caption="Contact" />
-        <Button caption="{isFav ? 'Unfavorite' : 'Favorite'}" color={isFav ? null : 'success'} mode="outline" type="button" on:click={()=>{dispatch('toggleFavorite', id)}} />
-        <Button caption="Show Details" type="button" />
+        <Button href="mailto:{email}">Contact</Button>
+        <Button color={isFav ? null : 'success'} mode="outline" type="button" on:click={()=>{dispatch('toggleFavorite', id)}}>{isFav ? 'Unfavorite' : 'Favorite'}</Button>
+        <Button type="button">Show details</Button>
     </footer>
 </div>
 

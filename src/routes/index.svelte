@@ -61,7 +61,7 @@
 <Header />
 <main>
 	<div class="form-control">
-	<Button on:click={()=>{showForm = !showForm}} caption="Add Meetup" />
+	<Button on:click={()=>{showForm = !showForm}}>Add Meetup</Button>
 	</div>
 	{#if showForm}
 	<EditMeetup on:save={addMeetup} />
