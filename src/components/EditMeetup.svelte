@@ -8,21 +8,18 @@
     const dispatch = createEventDispatcher();
 
     let title = "";
-    let validTitle = false;
 	let description = "";
-    let validDesc = false;
 	let imageUrl = "";
-    let validUrl = false;
 	let address = "";
-    let validAddress = false;
 	let email = "";
-    let validEmail = false;
 
     $: validTitle = !isEmpty(title);
     $: validDesc = !isEmpty(description);
     $: validUrl = !isEmpty(imageUrl);
     $: validAddress = !isEmpty(address);
     $: validEmail = emailIsValid(email);
+
+    $: formIsValid = validTitle && validDesc && validUrl && validAddress && validEmail;
 
     const submitForm = () => {
         dispatch('save', {
@@ -46,7 +43,7 @@
 </form>
 <div slot="footer">
     <Button type="button" mode="outline" on:click={()=>{dispatch("cancel")}}>Cancel</Button>
-    <Button type="button" on:click={submitForm}>Save</Button>
+    <Button type="button" on:click={submitForm} disabled={!formIsValid}>Save</Button>
 </div>
 </Modal>
 
