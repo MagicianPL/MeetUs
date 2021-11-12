@@ -22,17 +22,8 @@
 
 	const toggleFavorite = (e) => {
 		const id = e.detail;
-		//I'm cloning choosed meetup
-		const updatedMeetup = { ...meetups.find(obj => obj.id === id) } ;
-		updatedMeetup.isFavorite = !updatedMeetup.isFavorite;
-
-		const meetupIndex = meetups.findIndex(obj => obj.id === id);
-		//I'm cloning array
-		const updatedArrMeetups = [...meetups];
-		//changing old meetup to new one;
-		updatedArrMeetups[meetupIndex] = updatedMeetup;
-		//updating array;
-		meetups = updatedArrMeetups;
+		
+		customMeetupsStore.toggleFavorite(id);
 	};
 
 </script>

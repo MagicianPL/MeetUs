@@ -37,7 +37,22 @@ const customMeetupsStore = {
 			return [newMeetup, ...items];
 		});
 	},
-	toggleFavorite: () => {}
+	toggleFavorite: (id) => {
+		meetups.update((items) => {
+			//I'm cloning choosed meetup
+			const updatedMeetup = { ...items.find((obj) => obj.id === id) };
+			updatedMeetup.isFavorite = !updatedMeetup.isFavorite;
+
+			const meetupIndex = items.findIndex((obj) => obj.id === id);
+			//I'm cloning array
+			const updatedArrMeetups = [...items];
+			//changing old meetup to new one;
+			updatedArrMeetups[meetupIndex] = updatedMeetup;
+
+			//updating array;
+			return updatedArrMeetups;
+		});
+	}
 };
 
 export default customMeetupsStore;
