@@ -1,6 +1,6 @@
 import { writable } from 'svelte/store';
 
-const meetups = writable([
+export const meetups = writable([
 	{
 		id: 'm1',
 		title: 'Learn to write awesome code in just 3 minutes!',
@@ -25,7 +25,7 @@ const meetups = writable([
 	}
 ]);
 
-export const customMeetupsStore = {
+const customMeetupsStore = {
 	subscribe: meetups.subscribe,
 	addMeetup: (meetupData) => {
 		const newMeetup = {
@@ -40,4 +40,4 @@ export const customMeetupsStore = {
 	toggleFavorite: () => {}
 };
 
-export default meetups;
+export default customMeetupsStore;

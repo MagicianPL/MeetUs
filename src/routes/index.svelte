@@ -1,6 +1,5 @@
 <script>
-	import meetups from '../store/meetups-store';
-	import {customMeetupsStore} from '../store/meetups-store';
+	import customMeetupsStore, {meetups} from '../store/meetups-store';
 	import Header from '../components/Header.svelte';
 	import MeetupGrid from '../components/MeetupGrid.svelte';
 	import EditMeetup from '../components/EditMeetup.svelte';
