@@ -4,8 +4,18 @@
 	import MeetupGrid from '../components/MeetupGrid.svelte';
 	import EditMeetup from '../components/EditMeetup.svelte';
 	import Button from '../components/Button.svelte';
+	import MeetupDetails from '../components/MeetupDetails.svelte';
 
 	let showForm = false;
+	let showDetails = false;
+
+	let detailsInfo = {};
+
+	const showDetailsPage = (e) => {
+	
+		showDetails = true;
+		detailsInfo.id = e.detail;
+	};
 
 	const addMeetup = () => {
 		showForm = false;
@@ -19,6 +29,7 @@
 
 <Header />
 <main>
+{#if !showDetails}
 	<div class="form-control">
 		<Button
 			on:click={() => {
@@ -34,7 +45,10 @@
 			}}
 		/>
 	{/if}
-	<MeetupGrid meetups={$meetups} on:toggleFavorite={toggleFavorite} />
+	<MeetupGrid meetups={$meetups} on:toggleFavorite={toggleFavorite} on:showDetails={showDetailsPage} />
+{:else}
+	<MeetupDetails id={detailsInfo.id} bind:showDetails={showDetails} />
+{/if}
 </main>
 
 <style>
