@@ -22,7 +22,6 @@
 
 	const toggleFavorite = (e) => {
 		const id = e.detail;
-		
 		customMeetupsStore.toggleFavorite(id);
 	};
 
