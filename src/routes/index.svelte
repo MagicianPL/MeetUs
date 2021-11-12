@@ -1,4 +1,5 @@
 <script>
+	import meetups from '../store/meetups-store';
 	import Header from '../components/Header.svelte';
 	import MeetupGrid from '../components/MeetupGrid.svelte';
 	import EditMeetup from '../components/EditMeetup.svelte';
@@ -44,7 +45,7 @@
 	{#if showForm}
 	<EditMeetup on:save={addMeetup} on:cancel={()=>{showForm = false}} />
 	{/if}
-	<MeetupGrid {meetups} on:toggleFavorite={toggleFavorite} />
+	<MeetupGrid meetups={$meetups} on:toggleFavorite={toggleFavorite} />
 </main>
 
 <style>
