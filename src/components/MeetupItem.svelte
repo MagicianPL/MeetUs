@@ -11,11 +11,15 @@ const dispatch = createEventDispatcher();
     export let description;
     export let img;
     export let address;
-    export let email;
+   
     export let isFav;
 
     const toggleFavorite = () => {
         customMeetupsStore.toggleFavorite(id);
+    };
+
+    const deleteMeetup = () => {
+        customMeetupsStore.deleteMeetup(id);
     };
 </script>
 
@@ -39,6 +43,9 @@ const dispatch = createEventDispatcher();
         <Button on:click={()=>{dispatch("edit", id)}}>Edit</Button>
         <Button color={isFav ? null : 'success'} mode="outline" type="button" on:click={toggleFavorite}>{isFav ? 'Unfavorite' : 'Favorite'}</Button>
         <Button type="button" on:click={()=>{dispatch("showDetails", id)}}>Show details</Button>
+       <div class="delete">
+        <Button on:click={deleteMeetup} type="button" mode="outline">Delete</Button>
+       </div> 
     </footer>
 </div>
 
@@ -86,6 +93,10 @@ const dispatch = createEventDispatcher();
         color: rgb(48, 45, 45);
         font-size: 25px;
         margin-bottom: 12px;
+    }
+
+    .delete {
+        margin-top: 1rem;
     }
 
     footer {

@@ -37,6 +37,13 @@ const customMeetupsStore = {
 			return [newMeetup, ...items];
 		});
 	},
+
+	deleteMeetup: (id) => {
+		meetups.update((items) => {
+			return items.filter((i) => i.id !== id);
+		});
+	},
+
 	toggleFavorite: (id) => {
 		meetups.update((items) => {
 			//I'm cloning choosed meetup
