@@ -1,5 +1,5 @@
 <script>
-    import customMeetupsStore from '../store/meetups-store';
+    import customMeetupsStore, {meetups} from '../store/meetups-store';
     import {createEventDispatcher} from 'svelte';
     import TextInput from './TextInput.svelte';
     import Button from './Button.svelte';
@@ -8,11 +8,47 @@
 
     const dispatch = createEventDispatcher();
 
+    export let id = null;
+
     let title = "";
 	let description = "";
 	let imageUrl = "";
 	let address = "";
 	let email = "";
+
+    
+
+    if (id) {
+        const unsubscribe = meetups.subscribe(items => {
+            const editedMeetup = items.find(i => i.id === id);
+            title = editedMeetup.title;
+            description = editedMeetup.description;
+            imageUrl = editedMeetup.image;
+            address = editedMeetup.address;
+            email = editedMeetup.email;
+        });
+
+        unsubscribe();
+    };
+
+    const saveEditedMeetup = () => {
+        const editedMeetup = {
+            title: title,
+            description: description,
+            image: imageUrl,
+            address: address,
+            email: email,
+        };
+
+        const index = $meetups.findIndex(i => i.id === id);
+        $meetups[index] = {...$meetups[index], ...editedMeetup};
+    title = "";
+	description = "";
+    imageUrl = "";
+	address = "";
+	email = "";
+    };
+
 
     $: validTitle = !isEmpty(title);
     $: validDesc = !isEmpty(description);
@@ -24,7 +60,9 @@
 
     const submitForm = () => {
         dispatch('save');
-        const newMeetup = {
+
+        if(!id) {
+            const newMeetup = {
 			id: Math.random().toString(),
 			title: title,
 			description: description,
@@ -33,6 +71,10 @@
 			email: email,
 		};
 		customMeetupsStore.addMeetup(newMeetup);
+        } else {
+            saveEditedMeetup();
+        };
+        
     };
 </script>
 

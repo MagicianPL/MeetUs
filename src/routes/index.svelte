@@ -10,6 +10,7 @@
 	let showDetails = false;
 
 	let detailsInfo = {};
+	let editedMeetupId = null;
 
 	const showDetailsPage = (e) => {
 	
@@ -25,6 +26,13 @@
 		const id = e.detail;
 		customMeetupsStore.toggleFavorite(id);
 	};
+
+	const editMeetup = (e) => {
+		editedMeetupId = e.detail;
+		showForm = true;
+		console.log(e);
+	};
+
 </script>
 
 <Header />
@@ -34,18 +42,20 @@
 		<Button
 			on:click={() => {
 				showForm = !showForm;
+				editedMeetupId = null;
 			}}>Add Meetup</Button
 		>
 	</div>
 	{#if showForm}
 		<EditMeetup
+			id={editedMeetupId}
 			on:save={addMeetup}
 			on:cancel={() => {
 				showForm = false;
 			}}
 		/>
 	{/if}
-	<MeetupGrid meetups={$meetups} on:toggleFavorite={toggleFavorite} on:showDetails={showDetailsPage} />
+	<MeetupGrid meetups={$meetups} on:toggleFavorite={toggleFavorite} on:showDetails={showDetailsPage} on:edit={editMeetup} />
 {:else}
 	<MeetupDetails id={detailsInfo.id} bind:showDetails={showDetails} />
 {/if}
