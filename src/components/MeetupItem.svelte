@@ -36,7 +36,7 @@ const dispatch = createEventDispatcher();
         <p>{address}</p>
     </div>
     <footer>
-        <Button on:click={()=>{dispatch("edit", id)}}>Contact</Button>
+        <Button on:click={()=>{dispatch("edit", id)}}>Edit</Button>
         <Button color={isFav ? null : 'success'} mode="outline" type="button" on:click={toggleFavorite}>{isFav ? 'Unfavorite' : 'Favorite'}</Button>
         <Button type="button" on:click={()=>{dispatch("showDetails", id)}}>Show details</Button>
     </footer>
