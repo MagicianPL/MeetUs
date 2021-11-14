@@ -12,6 +12,11 @@
 	let detailsInfo = {};
 	let editedMeetupId = null;
 
+	const showAddingForm = () => {
+		showForm = !showForm;
+		editedMeetupId = null;
+	};
+
 	const showDetailsPage = (e) => {
 	
 		showDetails = true;
@@ -39,12 +44,7 @@
 <main>
 {#if !showDetails}
 	<div class="form-control">
-		<Button
-			on:click={() => {
-				showForm = !showForm;
-				editedMeetupId = null;
-			}}>Add Meetup</Button
-		>
+		
 	</div>
 	{#if showForm}
 		<EditMeetup
@@ -55,7 +55,7 @@
 			}}
 		/>
 	{/if}
-	<MeetupGrid meetups={$meetups} on:toggleFavorite={toggleFavorite} on:showDetails={showDetailsPage} on:edit={editMeetup} />
+	<MeetupGrid meetups={$meetups} on:showAddingForm={showAddingForm} on:toggleFavorite={toggleFavorite} on:showDetails={showDetailsPage} on:edit={editMeetup} />
 {:else}
 	<MeetupDetails id={detailsInfo.id} bind:showDetails={showDetails} />
 {/if}
