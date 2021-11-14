@@ -1,6 +1,14 @@
+<script>
+    import { createEventDispatcher } from 'svelte';
+
+    const dispatch = createEventDispatcher();
+
+    export let allIsActive = true;
+</script>
+
 <section class="meetups-control">
-    <button>All</button>
-    <button>Favorites</button>
+    <button class="{allIsActive ? "active" : null}" on:click ={()=>{dispatch("select", 0)}}>All</button>
+    <button class="{!allIsActive ? "active" : null}" on:click={()=>{dispatch("select", 1)}}>Favorites</button>
 </section>
 
 <style>

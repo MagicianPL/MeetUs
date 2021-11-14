@@ -59,6 +59,12 @@ const customMeetupsStore = {
 			//updating array;
 			return updatedArrMeetups;
 		});
+	},
+
+	showFav: () => {
+		meetups.update((items) => {
+			return items.filter((i) => i.isFavorite);
+		});
 	}
 };
 
