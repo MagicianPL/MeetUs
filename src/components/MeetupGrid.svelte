@@ -1,4 +1,6 @@
 <script>
+  import {scale} from 'svelte/transition';
+import {flip} from 'svelte/animate';
     import { createEventDispatcher } from 'svelte';
     import customMeetupsStore from '../store/meetups-store';
     import MeetupItem from '../components/MeetupItem.svelte';
@@ -32,9 +34,11 @@
 		>
 </section>
 <section>
-	{#each filteredMeetups as meetup}
+	{#each filteredMeetups as meetup (meetup.id)}
+    <div transition:scale animate:flip={{duration: 300}}>
 		<MeetupItem on:toggleFavorite on:showDetails on:edit id={meetup.id} title={meetup.title} description={meetup.description} img={meetup.image} address={meetup.address} email={meetup.email} isFav={meetup.isFavorite} />
-	{/each}
+	  </div>
+  {/each}
 </section>
 
 <style>
