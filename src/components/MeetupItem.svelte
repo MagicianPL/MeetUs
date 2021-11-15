@@ -101,5 +101,6 @@ const dispatch = createEventDispatcher();
 
     footer {
         margin-bottom: 2rem;
+        padding-bottom: 2rem;
     }
 </style>
