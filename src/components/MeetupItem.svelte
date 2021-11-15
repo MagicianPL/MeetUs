@@ -63,9 +63,9 @@ const dispatch = createEventDispatcher();
         text-align: center;
     }
 
-    h1 {
+    .meetup h1 {
         text-align: center;
-        font: bold;
+        font-weight: bold;
         font-size: 30px;
         color: #88083d;
         margin-bottom: 1.5rem;

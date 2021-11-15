@@ -1,6 +1,8 @@
+<script>
+    import { fade } from 'svelte/transition';
+</script>
 
-
-<span><slot /></span>
+<span transition:fade><slot /></span>
 
 <style>
     span {
