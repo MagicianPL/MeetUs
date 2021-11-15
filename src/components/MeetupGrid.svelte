@@ -36,7 +36,7 @@ import {flip} from 'svelte/animate';
 <section>
 	{#each filteredMeetups as meetup (meetup.id)}
     <div transition:scale animate:flip={{duration: 300}}>
-		<MeetupItem on:toggleFavorite on:showDetails on:edit id={meetup.id} title={meetup.title} description={meetup.description} img={meetup.image} address={meetup.address} email={meetup.email} isFav={meetup.isFavorite} />
+		<MeetupItem on:toggleFavorite on:showDetails on:edit id={meetup.id} title={meetup.title} description={meetup.description} img={meetup.image} address={meetup.address} isFav={meetup.isFavorite} />
 	  </div>
   {/each}
 </section>
