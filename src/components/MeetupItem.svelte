@@ -59,6 +59,12 @@ const dispatch = createEventDispatcher();
         border-radius: 5px;
     }
 
+    @media (max-width: 767px) {
+        .meetup {
+            max-width: 500px;
+        }
+    }
+
     .meetup * {
         text-align: center;
     }
@@ -73,9 +79,15 @@ const dispatch = createEventDispatcher();
         padding: 20px 8px 0 8px;
     }
 
+    @media (max-width: 500px) {
+        .meetup h1 {
+            font-size: 26px;
+        }
+    }
+
     .image {
         width: 100%;
-        height: 250px;
+       /* height: 250px; */
         overflow: hidden;
         margin-bottom: 20px;
     }

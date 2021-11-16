@@ -50,6 +50,12 @@ import {flip} from 'svelte/animate';
     padding: 0 2rem;
   }
 
+  @media (max-width: 500px) {
+    .controls {
+      flex-direction: column;
+    }
+  }
+
     section {
   width: 100%;
   display: grid;
